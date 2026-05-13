@@ -1,5 +1,5 @@
 const gameUrls = {
-    'bitlife': 'https://3kh0-assets.silvereen.net/3kh0-assets/bitlife/',
+    'bitlife': 'https://3kh0-assets.silvereen.net/3kh0-assets/BitLife/',
     'retro-bowl': 'https://3kh0-assets.silvereen.net/3kh0-assets/retro-bowl/',
     'slope': 'https://3kh0-assets.silvereen.net/3kh0-assets/slope/'
 };
