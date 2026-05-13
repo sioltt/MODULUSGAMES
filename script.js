@@ -1,7 +1,7 @@
 const gameUrls = {
     'bitlife': './Games/BitLife/index.html',
     'retro-bowl': './Games/retro-bowl/index.html',
-    'slope': 'https://3kh0-assets.silvereen.net/3kh0-assets/slope/'
+    'slope': './Games/slope/index.html',
 };
 
 function loadGame(gameKey) {
