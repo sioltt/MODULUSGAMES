@@ -2,21 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cyber Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aevitas | Game Hub</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for that clean Essentials look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Cyber<span>Games</span></h1>
-        <button onclick="loadGame('bitlife')">BitLife</button>
-        <button onclick="loadGame('retro-bowl')">Retro Bowl</button>
-        <button onclick="loadGame('slope')">Slope</button>
-    </div>
 
-    <div class="main-stage">
-        <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
-    </div>
+<div class="aevitas-container">
+    <aside class="sidebar">
+        <div class="logo">AEVITAS<span>ELITE</span></div>
+        <nav>
+            <p class="nav-label">DATABASE</p>
+            <button class="nav-item active" onclick="loadGame('retro-bowl')">Retro Bowl</button>
+            <button class="nav-item" onclick="loadGame('bitlife')">BitLife</button>
+            <button class="nav-item" onclick="loadGame('slope')">Slope</button>
+        </nav>
+        <div class="admin-console">
+            <p>Admin Terminal</p>
+            <div id="status-line">> System Ready</div>
+        </div>
+    </aside>
 
-    <script src="script.js"></script>
+    <main class="game-stage">
+        <div class="stage-header">
+            <h2 id="current-title">Retro Bowl</h2>
+            <button class="fullscreen-btn" onclick="toggleFullscreen()">Expand Display</button>
+        </div>
+        
+        <div class="iframe-wrapper" id="stage">
+            <iframe id="game-frame" src="./games/retro-bowl/index.html" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
