@@ -5,18 +5,59 @@ const gameUrls = {
 };
 
 function loadGame(gameKey) {
+    const home = document.getElementById('home-menu');
+    const stage = document.getElementById('game-stage');
     const frame = document.getElementById('game-frame');
-    const title = document.getElementById('current-title');
-    const status = document.getElementById('status-line');
-
+    
+    // Hide Home, Show Stage
+    home.style.display = 'none';
+    stage.classList.add('active');
+    
+    // Load Game
     if (gameUrls[gameKey]) {
         frame.src = gameUrls[gameKey];
-        title.innerText = gameKey.replace('-', ' ').toUpperCase();
-        status.innerText = `> Loading ${gameKey}...`;
-        
-        // Update active button state
-        document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
-        event.currentTarget.classList.add('active');
+        document.getElementById('current-title').innerText = gameKey.toUpperCase();
+    }
+}
+
+// Swipe Down to Exit Fullscreen
+let touchstartY = 0;
+let touchendY = 0;
+
+document.addEventListener('touchstart', e => {
+    touchstartY = e.changedTouches[0].screenY;
+});
+
+document.addEventListener('touchend', e => {
+    touchendY = e.changedTouches[0].screenY;
+    handleGesture();
+});
+
+function handleGesture() {
+    // If swipe down is long enough and we are in fullscreen
+    if (touchendY > touchstartY + 100) {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        }
+    }
+}
+
+function toggleFullscreen() {
+    const stage = document.getElementById('stage');
+    
+    // iOS Safari Fix: If standard fullscreen fails, we use a CSS fallback
+    if (stage.requestFullscreen) {
+        stage.requestFullscreen();
+    } else if (stage.webkitRequestFullscreen) { /* iOS/Safari */
+        stage.webkitRequestFullscreen();
+    } else {
+        // Pseudo-fullscreen for iOS Home Screen App
+        stage.style.position = 'fixed';
+        stage.style.top = '0';
+        stage.style.left = '0';
+        stage.style.width = '100vw';
+        stage.style.height = '100vh';
+        stage.style.zIndex = '9999';
     }
 }
 
