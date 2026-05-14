@@ -58,12 +58,34 @@ body {
     color: var(--accent-cyan);
 }
 
-/* Game Stage */
+/* Hide the game stage until a game is picked */
 .game-stage {
+    display: none; /* Changed from flex */
     flex-grow: 1;
     padding: 30px;
+    flex-direction: column;
+}
+
+/* Class to show the stage */
+.game-stage.active {
+    display: flex;
+}
+
+/* Home Menu Styling */
+.home-menu {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.home-menu h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
 }
 
 .stage-header {
