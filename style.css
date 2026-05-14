@@ -1,124 +1,77 @@
 :root {
-    --bg-dark: #0a0c10;
-    --panel-dark: #12151c;
-    --accent-cyan: #00f2ff;
-    --text-main: #e0e6ed;
-    --glass: rgba(255, 255, 255, 0.03);
+    --bg: #05070a;
+    --accent: #00f2ff;
+    --card-bg: rgba(255, 255, 255, 0.05);
 }
 
 body {
     margin: 0;
-    background-color: var(--bg-dark);
-    color: var(--text-main);
+    background: var(--bg);
+    color: white;
     font-family: 'Inter', sans-serif;
     overflow: hidden;
 }
 
-.aevitas-container {
-    display: flex;
+.screen {
+    display: none;
     height: 100vh;
-}
-
-/* Sidebar Styling */
-.sidebar {
-    width: 260px;
-    background: var(--panel-dark);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
+    width: 100vw;
     flex-direction: column;
-    padding: 20px;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
+.screen.active { display: flex; }
+
+/* Home Screen Grid */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    overflow-y: auto;
 }
 
-.logo span { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan); }
-
-.nav-label { font-size: 10px; color: #666; margin-bottom: 10px; letter-spacing: 1px; }
-
-.nav-item {
-    background: var(--glass);
-    border: 1px solid transparent;
-    color: var(--text-main);
-    padding: 12px;
-    margin-bottom: 8px;
-    border-radius: 8px; /* Essentials rounded look */
-    text-align: left;
+.game-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
     cursor: pointer;
     transition: 0.3s;
+    position: relative;
 }
 
-.nav-item:hover, .nav-item.active {
-    background: rgba(0, 242, 255, 0.1);
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
+.game-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
 }
 
-/* Hide the game stage until a game is picked */
-.game-stage {
-    display: none; /* Changed from flex */
-    flex-grow: 1;
-    padding: 30px;
-    flex-direction: column;
+.game-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-/* Class to show the stage */
-.game-stage.active {
-    display: flex;
-}
-
-/* Home Menu Styling */
-.home-menu {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.home-menu h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: var(--accent-cyan);
-    text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
-}
-
-.stage-header {
+/* Stage Controls (Top Bar) */
+.stage-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    padding: 10px 20px;
+    background: #111;
+    border-bottom: 1px solid var(--accent);
 }
 
-.fullscreen-btn {
-    background: var(--accent-cyan);
-    color: black;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-weight: bold;
+.control-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 15px;
+    border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-.iframe-wrapper {
-    flex-grow: 1;
-    background: #000;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 242, 255, 0.2); /* Cyan border to match Aevitas */
-    overflow: hidden;
-    position: relative;
-    /* This ensures the container takes up all available vertical space */
-    display: flex; 
-}
-
-#game-frame {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-}
+.iframe-container { flex-grow: 1; background: #000; }
+#game-frame { width: 100%; height: 100%; }
