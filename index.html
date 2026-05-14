@@ -2,38 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aevitas | Game Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AEVITAS | ELITE</title>
+    
+    <!-- iOS Web App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Aevitas">
+    
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for that clean Essentials look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="aevitas-container">
+    <!-- Sidebar Navigation -->
     <aside class="sidebar">
-        <div class="logo">AEVITAS<span>ELITE</span></div>
+        <div class="logo" onclick="showHome()">AEVITAS<span>ELITE</span></div>
         <nav>
             <p class="nav-label">DATABASE</p>
-            <button class="nav-item active" onclick="loadGame('retro-bowl')">Retro Bowl</button>
+            <button class="nav-item" onclick="loadGame('retro-bowl')">Retro Bowl</button>
             <button class="nav-item" onclick="loadGame('bitlife')">BitLife</button>
             <button class="nav-item" onclick="loadGame('slope')">Slope</button>
         </nav>
+        
         <div class="admin-console">
             <p>Admin Terminal</p>
             <div id="status-line">> System Ready</div>
         </div>
     </aside>
 
-    <main class="game-stage">
-        <div class="stage-header">
-            <h2 id="current-title">Retro Bowl</h2>
-            <button class="fullscreen-btn" onclick="toggleFullscreen()">Expand Display</button>
-        </div>
+    <!-- Content Area -->
+    <main class="content-area">
         
-        <div class="iframe-wrapper" id="stage">
-            <iframe id="game-frame" src="./games/retro-bowl/index.html" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <!-- Main Menu (Visible by Default) -->
+        <section id="home-menu" class="home-menu">
+            <div class="hero-content">
+                <h1>AEVITAS<span>ELITE</span></h1>
+                <p class="subtitle">PREMIUM DIGITAL ASSET VAULT</p>
+                <div class="pulse-ring"></div>
+            </div>
+            <div class="menu-hint">SELECT A MODULE FROM THE SIDEBAR TO INITIALIZE</div>
+        </section>
+
+        <!-- Game Stage (Hidden until game selected) -->
+        <section id="game-stage" class="game-stage">
+            <div class="stage-header">
+                <div class="header-left">
+                    <span class="status-dot"></span>
+                    <h2 id="current-title">INITIALIZING...</h2>
+                </div>
+                <button class="fullscreen-btn" onclick="toggleFullscreen()">Expand Display</button>
+            </div>
+            
+            <div class="iframe-wrapper" id="stage">
+                <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+
     </main>
 </div>
 
