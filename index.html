@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AEVITAS | ELITE</title>
-    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -21,22 +19,21 @@
 
         <div class="game-grid">
             <div class="game-card" onclick="launchGame('retro-bowl')">
-                <div class="card-inner">
-                    <img src="./assets/thumbnails/retro-bowl.png" alt="Retro Bowl">
-                    <span>RETRO BOWL</span>
-                </div>
+                <div class="card-glow"></div>
+                <div class="icon-box">RB</div>
+                <span>RETRO BOWL</span>
             </div>
+
             <div class="game-card" onclick="launchGame('bitlife')">
-                <div class="card-inner">
-                    <img src="./assets/thumbnails/bitlife.png" alt="BitLife">
-                    <span>BITLIFE</span>
-                </div>
+                <div class="card-glow"></div>
+                <div class="icon-box">BL</div>
+                <span>BITLIFE</span>
             </div>
+
             <div class="game-card" onclick="launchGame('slope')">
-                <div class="card-inner">
-                    <img src="./assets/thumbnails/slope.png" alt="Slope">
-                    <span>SLOPE</span>
-                </div>
+                <div class="card-glow"></div>
+                <div class="icon-box">SL</div>
+                <span>SLOPE</span>
             </div>
         </div>
     </div>
@@ -47,10 +44,9 @@
                 <button class="nav-btn" onclick="backToMenu()">MAIN MENU</button>
                 <button class="nav-btn cloak-btn" onclick="goToClassroom()">CLASSROOM</button>
             </div>
-            <h2 id="current-title">INITIALIZING...</h2>
+            <h2 id="current-title">SYSTEM ACTIVE</h2>
             <button class="nav-btn" onclick="toggleFullscreen()">FULLSCREEN</button>
         </div>
-        
         <div class="iframe-wrapper" id="stage-wrapper">
             <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
         </div>
