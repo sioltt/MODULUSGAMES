@@ -4,17 +4,61 @@ const gameUrls = {
     'slope': './Games/slope/index.html'
 };
 
-// 1. BOOT SEQUENCE HANDLER
+// --- MATRIX DATA RAIN LOGIC ---
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const nums = '0123456789';
+const alphabet = latin + nums;
+
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const rainDrops = Array.from({ length: columns }).fill(1);
+
+function drawMatrix() {
+    // Slight black fill to create the trailing fade effect
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#00f2ff'; // Your Neon Cyan/Blue
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < rainDrops.length; i++) {
+        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.alphabet.length));
+        ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+        if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            rainDrops[i] = 0;
+        }
+        rainDrops[i]++;
+    }
+}
+
+// Start the animation loop
+const matrixInterval = setInterval(drawMatrix, 30);
+
+// --- BOOT TRANSITION ---
 window.addEventListener('load', () => {
-    const bootScreen = document.getElementById('boot-screen');
-    
-    // Give logs 3.2 seconds to finish typing
     setTimeout(() => {
+        const bootScreen = document.getElementById('boot-screen');
         bootScreen.classList.add('boot-fade');
+        
+        // Stop the matrix calculations once screen is hidden to save battery
         setTimeout(() => {
+            clearInterval(matrixInterval);
             bootScreen.style.display = 'none';
-        }, 800);
-    }, 3200);
+        }, 1500);
+    }, 3000); // Sequence lasts 3 seconds
+});
+
+// Resizing fix
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 });
 
 // 2. CORE NAVIGATION
