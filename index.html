@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AEVITAS | ELITE</title>
     
-    <!-- iOS Support -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
@@ -14,7 +13,6 @@
 </head>
 <body>
 
-    <!-- SCREEN 1: THE HOME GRID -->
     <div id="home-screen" class="screen active">
         <div class="vault-header">
             <h1>AEVITAS<span>ELITE</span></h1>
@@ -28,14 +26,12 @@
                     <span>RETRO BOWL</span>
                 </div>
             </div>
-
             <div class="game-card" onclick="launchGame('bitlife')">
                 <div class="card-inner">
                     <img src="./assets/thumbnails/bitlife.png" alt="BitLife">
                     <span>BITLIFE</span>
                 </div>
             </div>
-
             <div class="game-card" onclick="launchGame('slope')">
                 <div class="card-inner">
                     <img src="./assets/thumbnails/slope.png" alt="Slope">
@@ -45,10 +41,12 @@
         </div>
     </div>
 
-    <!-- SCREEN 2: THE GAME PLAYER -->
     <div id="game-stage" class="screen">
         <div class="top-nav">
-            <button class="nav-btn" onclick="backToMenu()">MAIN MENU</button>
+            <div class="nav-group">
+                <button class="nav-btn" onclick="backToMenu()">MAIN MENU</button>
+                <button class="nav-btn cloak-btn" onclick="goToClassroom()">CLASSROOM</button>
+            </div>
             <h2 id="current-title">INITIALIZING...</h2>
             <button class="nav-btn" onclick="toggleFullscreen()">FULLSCREEN</button>
         </div>
