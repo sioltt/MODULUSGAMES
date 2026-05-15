@@ -1,6 +1,6 @@
 const gameUrls = {
     'retro-bowl': './Games/retro-bowl/index.html',
-    'bitlife': './Games/bitlife/index.html',
+    'bitlife': './Games/BitLife/index.html',
     'slope': './Games/slope/index.html'
 };
 
